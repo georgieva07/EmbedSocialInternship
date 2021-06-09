@@ -85,5 +85,34 @@
                 </div>
     </div>
 </form>
+<br>
+<br>
+
+<div class="container">
+    <div class="h2">Reviews
+    </div>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Rating</td>
+                <td>Comment</td>
+                <td>Created by</td>
+                <td>Created on</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="review : ${reviews}">
+                <td th:text="${review.rating}"></td>
+                <td th:text="${review.reviewFullText}"></td>
+                <td th:text="${review.reviewerName}"></td>
+                <td th:text="${review.reviewCreatedOn}">Created on</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
 </body>
 </html>
