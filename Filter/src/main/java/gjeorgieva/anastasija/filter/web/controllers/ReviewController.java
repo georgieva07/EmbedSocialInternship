@@ -23,6 +23,6 @@ public class ReviewController {
     public String listReviews(Model model){
         List<Review> reviewList = this.reviewService.listAll();
         model.addAttribute("reviews", reviewList);
-        return "main_view";
+        return "home";
     }
 }

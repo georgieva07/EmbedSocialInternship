@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter reviews</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="h2">Filter reviews
+    </div>
+</div>
+<br>
+<br>
+<form method="post">
+    <div class="container">
+                <div class="card border-light mb-3" >
+                    <div class="row g-0">
+                        <div class="col-md-4" >
+                            <p>Order by rating:</p>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <select  class="btn btn-default dropdown-toggle" id="orderByRating" name="orderByRating" style="width: 100%">
+                                <option value="1">Highest First</option>
+                                <option value="0">Lowest First</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-0">
+                        <div class="col-md-4" >
+                            <p>Minimum rating:</p>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <select  class="btn btn-default dropdown-toggle" id="minimumRating" name="minimumRating" style="width: 100%">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-0">
+                        <div class="col-md-4" >
+                            <p>Order by date:</p>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <select  class="btn btn-default dropdown-toggle" id="orderByDate" name="orderByDate" style="width: 100%">
+                                <option value="1">Newest First</option>
+                                <option value="0">Oldest First</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-0">
+                        <div class="col-md-4" >
+                            <p>Prioratize by text:</p>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <select  class="btn btn-default dropdown-toggle" id="prioratizeByText" name="prioratizeByText" style="width: 100%">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-0">
+                        <div class="col-md-10">
+                            <button type="button" name="button" class="btn btn-primary btn-sm">Filter</button>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</form>
+</body>
+</html>
