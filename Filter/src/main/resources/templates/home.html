@@ -15,7 +15,7 @@
 </div>
 <br>
 <br>
-<form method="post">
+<form method="post" action="/reviews">
     <div class="container">
                 <div class="card border-light mb-3" >
                     <div class="row g-0">
@@ -65,12 +65,12 @@
                     <br>
                     <div class="row g-0">
                         <div class="col-md-4" >
-                            <p>Prioratize by text:</p>
+                            <p>Prioritize by text:</p>
                         </div>
                     </div>
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <select  class="btn btn-default dropdown-toggle" id="prioratizeByText" name="prioratizeByText" style="width: 100%">
+                            <select  class="btn btn-default dropdown-toggle" id="prioritizeByText" name="prioritizeByText" style="width: 100%">
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
@@ -79,7 +79,7 @@
                     <br>
                     <div class="row g-0">
                         <div class="col-md-10">
-                            <button type="button" name="button" class="btn btn-primary btn-sm">Filter</button>
+                            <button  id="filter" type="submit" name="filter" class="btn btn-primary btn-sm">Filter</button>
                         </div>
                     </div>
                 </div>
@@ -100,6 +100,7 @@
                 <td>Comment</td>
                 <td>Created by</td>
                 <td>Created on</td>
+                <td>Date and Time</td>
             </tr>
         </thead>
         <tbody>
@@ -107,7 +108,8 @@
                 <td th:text="${review.rating}"></td>
                 <td th:text="${review.reviewFullText}"></td>
                 <td th:text="${review.reviewerName}"></td>
-                <td th:text="${review.reviewCreatedOn}">Created on</td>
+                <td th:text="${review.reviewCreatedOn}"></td>
+                <td th:text="${review.reviewCreatedOnDate}"></td>
             </tr>
         </tbody>
     </table>
