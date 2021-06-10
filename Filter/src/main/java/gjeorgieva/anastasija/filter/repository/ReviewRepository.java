@@ -9,20 +9,26 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.reviewFullText DESC, R.rating DESC, R.reviewCreatedOnDate DESC")
-    List<Review> prioritizeTextHighestRatingNewest(int minimalRating);
 
-    //doesn't sort the ones with text by rating
-    @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.reviewFullText DESC, R.rating ASC, R.reviewCreatedOnDate DESC")
-    List<Review> prioritizeTextLowestRatingNewest(int minimalRating);
+    @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.rating DESC, R.reviewCreatedOnDate DESC")
+    List<Review> highestRatingNewest(int minimalRating);
+    @Query("SELECT R FROM Review R WHERE R.rating>= ?1 AND R.reviewFullText = '' ORDER BY R.rating DESC, R.reviewCreatedOnDate DESC")
+    List<Review> noTextHighestRatingNewest(int minimalRating);
 
-    //buggy1
-    @Query("SELECT R FROM Review R WHERE R.rating >= ?1 ORDER BY R.reviewFullText DESC, R.rating DESC,  R.reviewCreatedOnDate ASC")
-    List<Review> prioritizeTextHighestRatingOldest(int minimalRating);
+    @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.rating ASC, R.reviewCreatedOnDate DESC")
+    List<Review> lowestRatingNewest(int minimalRating);
+    @Query("SELECT R FROM Review R WHERE R.rating >= ?1 AND R.reviewFullText = '' ORDER BY R.rating ASC, R.reviewCreatedOnDate DESC")
+    List<Review> noTextLowestRatingNewest(int minimalRating);
 
-    //buggy2
-    @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.reviewFullText DESC, R.rating ASC,  R.reviewCreatedOnDate ASC")
-    List<Review> prioritizeTextLowestRatingOldest(int minimalRating);
+    @Query("SELECT R FROM Review R WHERE R.rating >= ?1 ORDER BY R.rating DESC, R.reviewCreatedOnDate ASC")
+    List<Review> highestRatingOldest(int minimalRating);
+    @Query("SELECT R FROM Review R WHERE R.rating >= ?1 AND R.reviewFullText = '' ORDER BY R.rating DESC, R.reviewCreatedOnDate ASC")
+    List<Review> noTextHighestRatingOldest(int minimalRating);
+
+    @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.rating ASC,  R.reviewCreatedOnDate ASC")
+    List<Review> lowestRatingOldest(int minimalRating);
+    @Query("SELECT R FROM Review R WHERE R.rating>= ?1 AND R.reviewFullText = '' ORDER BY R.rating ASC,  R.reviewCreatedOnDate ASC")
+    List<Review> noTextLowestRatingOldest(int minimalRating);
 
     @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.rating DESC, R.reviewCreatedOnDate DESC")
     List<Review> dontPrioritizeTextHighestRatingNewest(int minimalRating);
@@ -30,11 +36,9 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Query("SELECT R FROM Review R WHERE R.rating >=?1 ORDER BY R.rating ASC, R.reviewCreatedOnDate DESC")
     List<Review> dontPrioritizeTextLowestRatingNewest(int minimalRating);
 
-    //buggy3
     @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.rating DESC,  R.reviewCreatedOnDate ASC")
     List<Review> dontPrioritizeTextHighestRatingOldest(int minimalRating);
 
-    //buggy4
     @Query("SELECT R FROM Review R WHERE R.rating>= ?1 ORDER BY R.rating ASC,  R.reviewCreatedOnDate ASC")
     List<Review> dontPrioritizeTextLowestRatingOldest(int minimalRating);
 }
